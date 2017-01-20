@@ -18,7 +18,7 @@ def write_ip_file(file_path, ip):
 	f = open(file_path, 'w')
 	f.write(ip)
 	f.close()
- 
+	
 def read_ip_file(file_path):
 	if os.path.isfile(file_path):    
 		f = open(file_path, 'r')
@@ -33,15 +33,15 @@ def main():
 
 	old_ip = read_ip_file(args.ipfile)
 	new_ip = urlopen(args.url).read().decode('utf-8')
- 
-	if old_ip != new_ip:
+	
+	ifold_ip != new_ip:
 		nma = 'https://www.notifymyandroid.com/publicapi/notify'
 		apikey = args.api
 		application = args.source
 		event = 'Public IP Address Changed'
 		description = 'New IP: {}'.format(new_ip)
 		priority = 0
- 
+		
 		nma_url = ("{}"
 		"?apikey={}"
 		"&application={}"
@@ -55,7 +55,7 @@ def main():
 			priority)
 		nma_url = nma_url.replace(' ', '%20')
 		urlopen(nma_url).read()
- 
+		
 	write_ip_file(args.ipfile, new_ip)
     
 main()
